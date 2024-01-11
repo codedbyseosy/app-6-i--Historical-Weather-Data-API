@@ -9,7 +9,7 @@ def home():
 
 @app.route("/api/v1/<station>/<date>") # '<>' this denotes that the user can enter any value
 def about(station, date):
-    filename = "/Users/eseoseodion/Documents/Python 2023/Visual Code/UDEMY_PROJECTS/app-6(i)/data_small/TG_STAID" + str(station).zfill(6) + ".txt"
+    filename = "/Users/eseoseodion/Documents/Python 2023/Visual Code/UDEMY_PROJECTS/app-6(i)/small_data/TG_STAID" + str(station).zfill(6) + ".txt"
     df = pd.read_csv(filename, skiprows=20, parse_dates=['    DATE'])
     temperature = df.loc[df["    DATE"] == date]['   TG'].squeeze() / 10 # to get the value of TG that corresponds to the data 1860-01-05
     return {"station": station,
@@ -18,6 +18,5 @@ def about(station, date):
 
 if __name__ == "__main__":
     app.run(debug=True) # run the Flask app
-
 
 
