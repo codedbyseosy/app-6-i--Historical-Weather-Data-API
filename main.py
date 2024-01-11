@@ -3,9 +3,11 @@ import pandas as pd
 
 app = Flask("Website")
 
+stations = pd.read_csv("/Users/eseoseodion/Documents/Python 2023/Visual Code/UDEMY_PROJECTS/app-6(i)/small_data/stations.txt", skiprows=17)
+stations = stations[["STAID", "STANAME                                 "]]
 @app.route("/") # Domain name/homepage
 def home():
-    return render_template("home.html")
+    return render_template("home.html", data=stations.to_html())
 
 @app.route("/api/v1/<station>/<date>") # '<>' this denotes that the user can enter any value
 def about(station, date):
